@@ -2,7 +2,7 @@
 {
     public class Car
     {
-        public int CarID;
+        public int CarID {  get; set; }
         public int BrandID {  get; set; }
         public Brand Brand { get; set; }
         public string Model { get; set; }
