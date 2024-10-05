@@ -11,15 +11,15 @@ namespace UdemyCarBook.WebApi.Controllers
     public class AboutsController : ControllerBase
     {
         private readonly CreateAboutCommandHandler _createAboutCommandHandler;
-        private readonly GetAboutByIdQueryHandler _getAboutByIdQueryHandle;
+        private readonly GetAboutByIdQueryHandler _getAboutByIdQueryHandler;
         private readonly GetAboutQueryHandler _getAboutQueryHandler;
         private readonly UpdateAboutCommandHandler _updateAboutCommandHandler;
         private readonly RemoveAboutCommandHandler _removeAboutCommandHandler;
 
-        public AboutsController(CreateAboutCommandHandler createAboutCommandHandler, GetAboutByIdQueryHandler getAboutByIdQueryHandle, GetAboutQueryHandler getAboutQueryHandler, UpdateAboutCommandHandler updateAboutCommandHandler, RemoveAboutCommandHandler removeAboutCommandHandler)
+        public AboutsController(CreateAboutCommandHandler createAboutCommandHandler, GetAboutByIdQueryHandler getAboutByIdQueryHandler, GetAboutQueryHandler getAboutQueryHandler, UpdateAboutCommandHandler updateAboutCommandHandler, RemoveAboutCommandHandler removeAboutCommandHandler)
         {
             _createAboutCommandHandler = createAboutCommandHandler;
-            _getAboutByIdQueryHandle = getAboutByIdQueryHandle;
+            _getAboutByIdQueryHandler = getAboutByIdQueryHandler;
             _getAboutQueryHandler = getAboutQueryHandler;
             _updateAboutCommandHandler = updateAboutCommandHandler;
             _removeAboutCommandHandler = removeAboutCommandHandler;
@@ -35,7 +35,7 @@ namespace UdemyCarBook.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAbout(int id)
         {
-            var value = await _getAboutByIdQueryHandle.Handle(new GetAboutByIdQuery(id));
+            var value = await _getAboutByIdQueryHandler.Handle(new GetAboutByIdQuery(id));
             return Ok(value);
         }
         [HttpPost]
